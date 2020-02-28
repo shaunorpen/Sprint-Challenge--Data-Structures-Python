@@ -36,6 +36,18 @@ _You may not use a Python List in your implementation of the `append` method (ex
 
 *Stretch Goal*:  Another method of implementing a ring buffer uses an array (Python List) instead of a linked list.  What are the advantages and disadvantages of using this method?  What disadvantage normally found in arrays is overcome with this arrangement?
 
+Q: What are the advantages and disadvantages of using this method?
+A: +ve 
+    - no need to import custom data structure
+    - no need to iterate through items in array when appending = O(1) runtime complexity instead of O(n).
+   -ve
+    - If you don't initialise the array to the correct length some of the benefit of using an array
+      may be lost if the computer has to find a new memory location for the array when an item is added
+
+Q: What disadvantage normally found in arrays is overcome with this arrangement?
+A: Provided the array is properly initialised to length = capacity it will never need to move memory
+   location as items are added since it'll always have the same length.
+
 For example:
 
 ```python
