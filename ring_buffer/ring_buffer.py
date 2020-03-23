@@ -8,13 +8,31 @@ class RingBuffer:
         self.storage = DoublyLinkedList()
 
     def append(self, item):
-        pass
+        if self.current == None:
+            self.current = 0
+        
+        if len(self.storage) < self.capacity:
+            self.storage.add_to_tail(item)
+            self.current += 1
+        else:
+            # Calculate the index to update
+            self.current = self.current % self.capacity
+            # Loop through the DLL until you find that index
+            current_node = self.storage.head
+            for _ in range(self.current):
+                current_node = current_node.next
+            current_node.value = item
+            self.current += 1 
 
     def get(self):
         # Note:  This is the only [] allowed
         list_buffer_contents = []
 
-        # TODO: Your code here
+        current_node = self.storage.head
+
+        while current_node:
+            list_buffer_contents.append(current_node.value)
+            current_node = current_node.next
 
         return list_buffer_contents
 
@@ -23,10 +41,13 @@ class RingBuffer:
 
 class ArrayRingBuffer:
     def __init__(self, capacity):
-        pass
+        self.current = 0
+        self.storage = [None] * capacity
 
     def append(self, item):
-        pass
+        self.current = self.current % len(self.storage)
+        self.storage[self.current] = item
+        self.current += 1
 
     def get(self):
-        pass
+        return [val for val in self.storage if val is not None]

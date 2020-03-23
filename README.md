@@ -36,6 +36,18 @@ _You may not use a Python List in your implementation of the `append` method (ex
 
 *Stretch Goal*:  Another method of implementing a ring buffer uses an array (Python List) instead of a linked list.  What are the advantages and disadvantages of using this method?  What disadvantage normally found in arrays is overcome with this arrangement?
 
+Q: What are the advantages and disadvantages of using this method?
+A: +ve 
+    - no need to import custom data structure
+    - no need to iterate through items in array when appending = O(1) runtime complexity instead of O(n).
+   -ve
+    - If you don't initialise the array to the correct length some of the benefit of using an array
+      may be lost if the computer has to find a new memory location for the array when an item is added
+
+Q: What disadvantage normally found in arrays is overcome with this arrangement?
+A: Provided the array is properly initialised to length = capacity it will never need to move memory
+   location as items are added since it'll always have the same length.
+
 For example:
 
 ```python
@@ -65,6 +77,8 @@ buffer.get()   # should return ['d', 'e', 'f']
 ***!Important!*** If you are running this using PowerShell by clicking on the green play button, you will get an error that `names1.txt` is not found.  To resolve this, run it, get the error, then `cd` into the `names` directory in the `python` terminal that opens in VSCode.
 
 Navigate into the `names` directory. Here you will find two text files containing 10,000 names each, along with a program `names.py` that compares the two files and prints out duplicate name entries. Try running the code with `python3 names.py`. Be patient because it might take a while: approximately six seconds on my laptop. What is the runtime complexity of this code?
+
+Answer: The nested for loops comparing name_1 to name_2 give this code an overall runtime complexity of O(n^2).
 
 Six seconds is an eternity so you've been tasked with speeding up the code. Can you get the runtime to under a second? Under one hundredth of a second?
 
